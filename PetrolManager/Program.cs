@@ -16,7 +16,8 @@ namespace PetrolManager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Form1 Form1 = new Form1();
+            Application.Run(Form1);
         }
     }
 }

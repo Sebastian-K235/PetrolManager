@@ -14,15 +14,40 @@ namespace PetrolManager
     public partial class FormSimulation : Form
     {
         #region Properties
+        public static List<PictureBox> PumpPictures = new List<PictureBox>();
         #endregion
 
         #region Methods
         public FormSimulation()
         {
             InitializeComponent();
-            Data.AccessControls(this);
+            ListPumpPictures();
             Data.GeneratePumps();
 
+        }
+
+        private void ListPumpPictures()
+        {
+            PumpPictures.Add(pcbPump1);
+            PumpPictures.Add(pcbPump2);
+            PumpPictures.Add(pcbPump3);
+            PumpPictures.Add(pcbPump4);
+            PumpPictures.Add(pcbPump5);
+            PumpPictures.Add(pcbPump6);
+            PumpPictures.Add(pcbPump7);
+            PumpPictures.Add(pcbPump8);
+            PumpPictures.Add(pcbPump9);
+        }
+
+        #endregion
+
+        #region Events
+
+
+        private void tmrAppLoop_Tick(object sender, EventArgs e)
+        {
+            lblVehNum.Text = Data.vehicles.Count.ToString();
+            Data.CheckQueue();
         }
 
         private void btnSimBack_Click(object sender, EventArgs e)
@@ -41,11 +66,17 @@ namespace PetrolManager
             Data.StopGeneratingVehicles();
         }
 
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+
+        }
         private void btnStart_Click(object sender, EventArgs e)
         {
             Data.GenerateVehicles();
             lblTest1.Text = this.Contains(pcbPump1).ToString();
         }
+
         #endregion
+
     }
 }

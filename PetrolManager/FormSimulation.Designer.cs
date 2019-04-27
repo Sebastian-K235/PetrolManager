@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSimulation));
             this.btnSimBack = new System.Windows.Forms.Button();
             this.pnlPumps = new System.Windows.Forms.Panel();
@@ -58,6 +59,7 @@
             this.lblVehiclesUnserviced = new System.Windows.Forms.Label();
             this.lblVehNum = new System.Windows.Forms.Label();
             this.lblTest1 = new System.Windows.Forms.Label();
+            this.tmrAppLoop = new System.Windows.Forms.Timer(this.components);
             this.pnlPumps.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbPump7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbPump8)).BeginInit();
@@ -296,6 +298,7 @@
             this.btnReset.TabIndex = 38;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // lblTotalLitres
             // 
@@ -359,6 +362,12 @@
             this.lblTest1.Size = new System.Drawing.Size(46, 17);
             this.lblTest1.TabIndex = 45;
             this.lblTest1.Text = "label1";
+            // 
+            // tmrAppLoop
+            // 
+            this.tmrAppLoop.Enabled = true;
+            this.tmrAppLoop.Interval = 33;
+            this.tmrAppLoop.Tick += new System.EventHandler(this.tmrAppLoop_Tick);
             // 
             // FormSimulation
             // 
@@ -435,5 +444,6 @@
         public System.Windows.Forms.PictureBox pcbPump6;
         public System.Windows.Forms.PictureBox pcbPump2;
         public System.Windows.Forms.PictureBox pcbPump3;
+        private System.Windows.Forms.Timer tmrAppLoop;
     }
 }

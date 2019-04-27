@@ -4,28 +4,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using System.IO;
+using System.Drawing;
+
 
 namespace PetrolManager
 {
     class Pump
     {
         #region Properties
-        /// <summary>
-        /// Stores currently served vehicle by a pump.
-        /// </summary>
+     
         public Vehicle CurrentVehicle { get; set; }
+
         public string FuelType { get; set; }
 
-        public System.Windows.Forms.PictureBox Picture { get; set; }
+        public double FuellingRate { get; set; }
+
+        public System.Windows.Forms.PictureBox PictureBox = new System.Windows.Forms.PictureBox();
 
         public int PumpID { get; set; }
         #endregion
 
         #region Methods
-        public Pump(int ID)
+        public Pump(int ID, System.Windows.Forms.PictureBox pb)
         {
             CurrentVehicle = null;
             FuelType = "Unleaded";
+            PictureBox = pb;
+            FuellingRate = 1.5;
             PumpID = ID;
         }
 
@@ -47,10 +53,19 @@ namespace PetrolManager
         {
             CurrentVehicle = v;
             Timer timer = new Timer();
-            double fuelTime = ((v.TankVolume - v.LitresInTank) / 1.5) * 1000;
+            double fuelTime = ((v.TankVolume - v.LitresInTank) / FuellingRate) * 1000;
             timer.Interval = fuelTime + 3000;
+            PictureBox.Image = Image.FromFile("picPumpBusy.png");
+            timer.AutoReset = false;
+            timer.Start();
+            timer.Elapsed += (sender, e) => FinishTransaction(sender, e , v, this, v.TankVolume - v.LitresInTank);
+        }
 
-
+        public static void FinishTransaction(object sender, ElapsedEventArgs e, Vehicle v, Pump p, double l)
+        {
+            Transaction transaction = new Transaction(v, p, l);
+            p.PictureBox.Image = Image.FromFile("picPumpFree.png");
+            p.CurrentVehicle = null;
         }
         #endregion
     }

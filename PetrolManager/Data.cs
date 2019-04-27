@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using PetrolManager;
 
 namespace PetrolManager
 {
@@ -11,7 +12,6 @@ namespace PetrolManager
     {
         #region Properties
 
-        public static FormSimulation form;
         public static List<Vehicle> vehicles = new List<Vehicle>();
         public static List<Pump> pumps = new List<Pump>();
         public static Timer vehicleGenTimer;
@@ -19,10 +19,6 @@ namespace PetrolManager
         #endregion
 
         #region Methods
-        public static void AccessControls(FormSimulation frm)
-        {
-            form = frm;
-        }
 
         public static void GenerateVehicles()
         {
@@ -48,10 +44,9 @@ namespace PetrolManager
 
         public static void GeneratePumps()
         {
-            for (int i = 1; i <= 9; i++)
+            for (int i = 0; i <= 8; i++)
             {
-                Pump pump = new Pump(i);
-                pump.Picture = form.Controls["pcbPump1"] as System.Windows.Forms.PictureBox;
+                Pump pump = new Pump(i + 1, FormSimulation.PumpPictures[i]);
                 pumps.Add(pump);
             }
 
@@ -59,7 +54,18 @@ namespace PetrolManager
 
         public static void CheckQueue()
         {
-
+            if (vehicles.Count > 0)
+            {
+                foreach (Pump p in pumps)
+                {
+                    if (p.IsAvailable() == true)
+                    {
+                        p.FuelVehicle(vehicles[0]);
+                        vehicles.RemoveAt(0);
+                        break;
+                    }
+                }
+            }
         }
 
         #endregion

@@ -22,7 +22,7 @@ namespace PetrolManager
 
         public static void GenerateVehicles()
         {
-            vehicleGenTimer = new Timer(1500);
+            vehicleGenTimer = new Timer(500);
             vehicleGenTimer.Elapsed += CreateVehicle;
             vehicleGenTimer.Start();
         }

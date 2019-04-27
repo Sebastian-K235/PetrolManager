@@ -66,6 +66,8 @@ namespace PetrolManager
             Transaction transaction = new Transaction(v, p, l);
             p.PictureBox.Image = Image.FromFile("picPumpFree.png");
             p.CurrentVehicle = null;
+            Counters.VehiclesServed++;
+            Counters.TotalLitres += l;
         }
         #endregion
     }

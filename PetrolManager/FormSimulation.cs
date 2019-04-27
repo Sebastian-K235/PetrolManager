@@ -15,17 +15,22 @@ namespace PetrolManager
     {
         #region Properties
         public static List<PictureBox> PumpPictures = new List<PictureBox>();
+        public List<PictureBox> QueuePictures = new List<PictureBox>();
         #endregion
 
         #region Methods
         public FormSimulation()
         {
             InitializeComponent();
-            ListPumpPictures();
+            ListPictures();
             Data.GeneratePumps();
-
         }
 
+        private void ListPictures()
+        {
+            ListPumpPictures();
+            ListQueuePictures();
+        }
         private void ListPumpPictures()
         {
             PumpPictures.Add(pcbPump1);
@@ -38,6 +43,14 @@ namespace PetrolManager
             PumpPictures.Add(pcbPump8);
             PumpPictures.Add(pcbPump9);
         }
+        private void ListQueuePictures()
+        {
+            QueuePictures.Add(pcbVehicle1);
+            QueuePictures.Add(pcbVehicle2);
+            QueuePictures.Add(pcbVehicle3);
+            QueuePictures.Add(pcbVehicle4);
+            QueuePictures.Add(pcbVehicle5);
+        }
 
         #endregion
 
@@ -46,8 +59,8 @@ namespace PetrolManager
 
         private void tmrAppLoop_Tick(object sender, EventArgs e)
         {
-            lblVehNum.Text = Data.vehicles.Count.ToString();
             Data.CheckQueue();
+            Display.DisplayUI(this);
         }
 
         private void btnSimBack_Click(object sender, EventArgs e)

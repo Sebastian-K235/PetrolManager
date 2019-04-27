@@ -9,17 +9,10 @@ namespace PetrolManager
 {
     class Display
     {
-        public static void DisplaySimulation()
-        {
+        #region Properties
+        #endregion
 
-        }
-
-        public static void DisplayQueue()
-        {          
-           
-                foreach (Vehicle v in Data.vehicles)
-                {
-                }         
-        }
+        #region Methods
+        #endregion
     }
 }

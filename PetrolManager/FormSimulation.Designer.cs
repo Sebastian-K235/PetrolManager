@@ -1,6 +1,6 @@
 ﻿namespace PetrolManager
 {
-    partial class SimulationForm
+    partial class FormSimulation
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SimulationForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSimulation));
             this.btnSimBack = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlPumps = new System.Windows.Forms.Panel();
             this.pcbPump7 = new System.Windows.Forms.PictureBox();
             this.pcbPump8 = new System.Windows.Forms.PictureBox();
             this.pcbPump9 = new System.Windows.Forms.PictureBox();
@@ -48,7 +47,6 @@
             this.pcbVehicle5 = new System.Windows.Forms.PictureBox();
             this.pcbQueue = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.applicationLoop = new System.Windows.Forms.Timer(this.components);
             this.tbxTransactionList = new System.Windows.Forms.TextBox();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
@@ -59,7 +57,8 @@
             this.lblVehiclesServiced = new System.Windows.Forms.Label();
             this.lblVehiclesUnserviced = new System.Windows.Forms.Label();
             this.lblVehNum = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
+            this.lblTest1 = new System.Windows.Forms.Label();
+            this.pnlPumps.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbPump7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbPump8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbPump9)).BeginInit();
@@ -88,21 +87,21 @@
             this.btnSimBack.UseVisualStyleBackColor = true;
             this.btnSimBack.Click += new System.EventHandler(this.btnSimBack_Click);
             // 
-            // panel1
+            // pnlPumps
             // 
-            this.panel1.Controls.Add(this.pcbPump7);
-            this.panel1.Controls.Add(this.pcbPump8);
-            this.panel1.Controls.Add(this.pcbPump9);
-            this.panel1.Controls.Add(this.pcbPump4);
-            this.panel1.Controls.Add(this.pcbPump5);
-            this.panel1.Controls.Add(this.pcbPump6);
-            this.panel1.Controls.Add(this.pcbPump2);
-            this.panel1.Controls.Add(this.pcbPump3);
-            this.panel1.Controls.Add(this.pcbPump1);
-            this.panel1.Location = new System.Drawing.Point(509, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(328, 314);
-            this.panel1.TabIndex = 10;
+            this.pnlPumps.Controls.Add(this.pcbPump7);
+            this.pnlPumps.Controls.Add(this.pcbPump8);
+            this.pnlPumps.Controls.Add(this.pcbPump9);
+            this.pnlPumps.Controls.Add(this.pcbPump4);
+            this.pnlPumps.Controls.Add(this.pcbPump5);
+            this.pnlPumps.Controls.Add(this.pcbPump6);
+            this.pnlPumps.Controls.Add(this.pcbPump2);
+            this.pnlPumps.Controls.Add(this.pcbPump3);
+            this.pnlPumps.Controls.Add(this.pcbPump1);
+            this.pnlPumps.Location = new System.Drawing.Point(509, 12);
+            this.pnlPumps.Name = "pnlPumps";
+            this.pnlPumps.Size = new System.Drawing.Size(328, 314);
+            this.pnlPumps.TabIndex = 10;
             // 
             // pcbPump7
             // 
@@ -261,11 +260,6 @@
             this.panel2.Size = new System.Drawing.Size(491, 86);
             this.panel2.TabIndex = 34;
             // 
-            // applicationLoop
-            // 
-            this.applicationLoop.Interval = 33;
-            this.applicationLoop.Tick += new System.EventHandler(this.applicationLoop_Tick);
-            // 
             // tbxTransactionList
             // 
             this.tbxTransactionList.Location = new System.Drawing.Point(12, 105);
@@ -357,11 +351,21 @@
             this.lblVehNum.TabIndex = 44;
             this.lblVehNum.Text = "0";
             // 
-            // SimulationForm
+            // lblTest1
+            // 
+            this.lblTest1.AutoSize = true;
+            this.lblTest1.Location = new System.Drawing.Point(537, 508);
+            this.lblTest1.Name = "lblTest1";
+            this.lblTest1.Size = new System.Drawing.Size(46, 17);
+            this.lblTest1.TabIndex = 45;
+            this.lblTest1.Text = "label1";
+            // 
+            // FormSimulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(848, 620);
+            this.Controls.Add(this.lblTest1);
             this.Controls.Add(this.lblVehNum);
             this.Controls.Add(this.lblVehiclesUnserviced);
             this.Controls.Add(this.lblVehiclesServiced);
@@ -373,12 +377,12 @@
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.tbxTransactionList);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlPumps);
             this.Controls.Add(this.btnSimBack);
-            this.Name = "SimulationForm";
-            this.Text = "SimulationForm";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SimulationForm_FormClosed);
-            this.panel1.ResumeLayout(false);
+            this.Name = "FormSimulation";
+            this.Text = "FormSimulation";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormSimulation_FormClosed);
+            this.pnlPumps.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pcbPump7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbPump8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbPump9)).EndInit();
@@ -403,18 +407,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnSimBack;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pcbPump7;
-        private System.Windows.Forms.PictureBox pcbPump8;
-        private System.Windows.Forms.PictureBox pcbPump9;
-        private System.Windows.Forms.PictureBox pcbPump4;
-        private System.Windows.Forms.PictureBox pcbPump5;
-        private System.Windows.Forms.PictureBox pcbPump6;
-        private System.Windows.Forms.PictureBox pcbPump2;
-        private System.Windows.Forms.PictureBox pcbPump3;
-        private System.Windows.Forms.PictureBox pcbPump1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Timer applicationLoop;
         private System.Windows.Forms.TextBox tbxTransactionList;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnStop;
@@ -431,5 +424,16 @@
         public System.Windows.Forms.PictureBox pcbVehicle5;
         public System.Windows.Forms.PictureBox pcbQueue;
         private System.Windows.Forms.Label lblVehNum;
+        public System.Windows.Forms.PictureBox pcbPump1;
+        public System.Windows.Forms.Panel pnlPumps;
+        private System.Windows.Forms.Label lblTest1;
+        public System.Windows.Forms.PictureBox pcbPump7;
+        public System.Windows.Forms.PictureBox pcbPump8;
+        public System.Windows.Forms.PictureBox pcbPump9;
+        public System.Windows.Forms.PictureBox pcbPump4;
+        public System.Windows.Forms.PictureBox pcbPump5;
+        public System.Windows.Forms.PictureBox pcbPump6;
+        public System.Windows.Forms.PictureBox pcbPump2;
+        public System.Windows.Forms.PictureBox pcbPump3;
     }
 }

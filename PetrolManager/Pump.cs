@@ -9,14 +9,19 @@ namespace PetrolManager
 {
     class Pump
     {
+        #region Properties
         /// <summary>
         /// Stores currently served vehicle by a pump.
         /// </summary>
         public Vehicle CurrentVehicle { get; set; }
         public string FuelType { get; set; }
-        
+
+        public System.Windows.Forms.PictureBox Picture { get; set; }
 
         public int PumpID { get; set; }
+        #endregion
+
+        #region Methods
         public Pump(int ID)
         {
             CurrentVehicle = null;
@@ -24,15 +29,14 @@ namespace PetrolManager
             PumpID = ID;
         }
 
-        
-
         /// <summary>
         /// Returns true if a pump is free to be used.
         /// </summary>
         /// <returns></returns>
-        public bool Available()
+        public bool IsAvailable()
         {
             return CurrentVehicle == null;
+
         }
 
         /// <summary>
@@ -45,8 +49,9 @@ namespace PetrolManager
             Timer timer = new Timer();
             double fuelTime = ((v.TankVolume - v.LitresInTank) / 1.5) * 1000;
             timer.Interval = fuelTime + 3000;
-            timer.Elapsed += ;
+
 
         }
+        #endregion
     }
 }

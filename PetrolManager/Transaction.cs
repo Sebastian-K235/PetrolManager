@@ -8,13 +8,14 @@ namespace PetrolManager
 {
     class Transaction
     {
+        #region Properties
         public Vehicle Vehicle { get; set; }
         public Pump Pump { get; set; }
         public double NumberOfLitres { get; set; }
+        #endregion
 
-        public static void GenerateTransaction()
-        {
+        #region Methods
 
-        }
+        #endregion
     }
 }

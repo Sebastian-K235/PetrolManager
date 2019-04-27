@@ -7,19 +7,22 @@ using System.Timers;
 
 namespace PetrolManager
 {
-
     class Data
     {
+        #region Properties
 
-
-        /// <summary>
-        /// A queue to store vehicles ready to be served
-        /// </summary>
+        public static FormSimulation form;
         public static List<Vehicle> vehicles = new List<Vehicle>();
         public static List<Pump> pumps = new List<Pump>();
+        public static Timer vehicleGenTimer;
 
+        #endregion
 
-        static Timer vehicleGenTimer;
+        #region Methods
+        public static void AccessControls(FormSimulation frm)
+        {
+            form = frm;
+        }
 
         public static void GenerateVehicles()
         {
@@ -32,9 +35,9 @@ namespace PetrolManager
         {
             vehicleGenTimer.Dispose();
         }
-        
-    
-        public static void CreateVehicle(object sender, ElapsedEventArgs e) 
+
+
+        public static void CreateVehicle(object sender, ElapsedEventArgs e)
         {
             if (vehicles.Count < 20)
             {
@@ -45,16 +48,20 @@ namespace PetrolManager
 
         public static void GeneratePumps()
         {
-            for( int i = 1; i <= 9; i++)
+            for (int i = 1; i <= 9; i++)
             {
                 Pump pump = new Pump(i);
+                pump.Picture = form.Controls["pcbPump1"] as System.Windows.Forms.PictureBox;
                 pumps.Add(pump);
             }
+
         }
-        
+
         public static void CheckQueue()
         {
 
         }
+
+        #endregion
     }
 }

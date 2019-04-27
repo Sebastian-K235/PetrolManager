@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSimulation));
             this.btnSimBack = new System.Windows.Forms.Button();
             this.pnlPumps = new System.Windows.Forms.Panel();
@@ -45,7 +46,6 @@
             this.pcbVehicle3 = new System.Windows.Forms.PictureBox();
             this.pcbVehicle4 = new System.Windows.Forms.PictureBox();
             this.pcbVehicle5 = new System.Windows.Forms.PictureBox();
-            this.pcbQueue = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tbxTransactionList = new System.Windows.Forms.TextBox();
             this.btnStart = new System.Windows.Forms.Button();
@@ -58,6 +58,8 @@
             this.lblVehiclesUnserviced = new System.Windows.Forms.Label();
             this.lblVehNum = new System.Windows.Forms.Label();
             this.lblTest1 = new System.Windows.Forms.Label();
+            this.tmrAppLoop = new System.Windows.Forms.Timer(this.components);
+            this.lblQueue = new System.Windows.Forms.Label();
             this.pnlPumps.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbPump7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbPump8)).BeginInit();
@@ -73,7 +75,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcbVehicle3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbVehicle4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbVehicle5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbQueue)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -238,19 +239,10 @@
             this.pcbVehicle5.TabIndex = 32;
             this.pcbVehicle5.TabStop = false;
             // 
-            // pcbQueue
-            // 
-            this.pcbQueue.Location = new System.Drawing.Point(3, 3);
-            this.pcbQueue.Name = "pcbQueue";
-            this.pcbQueue.Size = new System.Drawing.Size(75, 75);
-            this.pcbQueue.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pcbQueue.TabIndex = 33;
-            this.pcbQueue.TabStop = false;
-            // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lblQueue);
             this.panel2.Controls.Add(this.pcbVehicle2);
-            this.panel2.Controls.Add(this.pcbQueue);
             this.panel2.Controls.Add(this.pcbVehicle1);
             this.panel2.Controls.Add(this.pcbVehicle5);
             this.panel2.Controls.Add(this.pcbVehicle3);
@@ -296,6 +288,7 @@
             this.btnReset.TabIndex = 38;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // lblTotalLitres
             // 
@@ -360,6 +353,21 @@
             this.lblTest1.TabIndex = 45;
             this.lblTest1.Text = "label1";
             // 
+            // tmrAppLoop
+            // 
+            this.tmrAppLoop.Enabled = true;
+            this.tmrAppLoop.Interval = 33;
+            this.tmrAppLoop.Tick += new System.EventHandler(this.tmrAppLoop_Tick);
+            // 
+            // lblQueue
+            // 
+            this.lblQueue.AutoSize = true;
+            this.lblQueue.Location = new System.Drawing.Point(19, 35);
+            this.lblQueue.Name = "lblQueue";
+            this.lblQueue.Size = new System.Drawing.Size(46, 17);
+            this.lblQueue.TabIndex = 33;
+            this.lblQueue.Text = "label1";
+            // 
             // FormSimulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -397,8 +405,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcbVehicle3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbVehicle4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbVehicle5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbQueue)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -412,21 +420,13 @@
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.Label lblTotalLitres;
-        private System.Windows.Forms.Label lblTotalProfit;
-        private System.Windows.Forms.Label lblCommission;
-        private System.Windows.Forms.Label lblVehiclesServiced;
-        private System.Windows.Forms.Label lblVehiclesUnserviced;
         public System.Windows.Forms.PictureBox pcbVehicle1;
         public System.Windows.Forms.PictureBox pcbVehicle2;
         public System.Windows.Forms.PictureBox pcbVehicle3;
         public System.Windows.Forms.PictureBox pcbVehicle4;
         public System.Windows.Forms.PictureBox pcbVehicle5;
-        public System.Windows.Forms.PictureBox pcbQueue;
-        private System.Windows.Forms.Label lblVehNum;
         public System.Windows.Forms.PictureBox pcbPump1;
         public System.Windows.Forms.Panel pnlPumps;
-        private System.Windows.Forms.Label lblTest1;
         public System.Windows.Forms.PictureBox pcbPump7;
         public System.Windows.Forms.PictureBox pcbPump8;
         public System.Windows.Forms.PictureBox pcbPump9;
@@ -435,5 +435,14 @@
         public System.Windows.Forms.PictureBox pcbPump6;
         public System.Windows.Forms.PictureBox pcbPump2;
         public System.Windows.Forms.PictureBox pcbPump3;
+        private System.Windows.Forms.Timer tmrAppLoop;
+        public System.Windows.Forms.Label lblTotalLitres;
+        public System.Windows.Forms.Label lblTotalProfit;
+        public System.Windows.Forms.Label lblCommission;
+        public System.Windows.Forms.Label lblVehiclesServiced;
+        public System.Windows.Forms.Label lblVehiclesUnserviced;
+        public System.Windows.Forms.Label lblVehNum;
+        public System.Windows.Forms.Label lblTest1;
+        public System.Windows.Forms.Label lblQueue;
     }
 }

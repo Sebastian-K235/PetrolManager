@@ -1,6 +1,6 @@
 ﻿namespace PetrolManager
 {
-    partial class Form1
+    partial class FormMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenu));
             this.lblMenu = new System.Windows.Forms.Label();
             this.pcbMenu = new System.Windows.Forms.PictureBox();
             this.btnStartSimulation = new System.Windows.Forms.Button();
@@ -77,7 +77,7 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // Form1
+            // FormMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -86,8 +86,8 @@
             this.Controls.Add(this.btnStartSimulation);
             this.Controls.Add(this.pcbMenu);
             this.Controls.Add(this.lblMenu);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "FormMenu";
+            this.Text = "FormMenu";
             ((System.ComponentModel.ISupportInitialize)(this.pcbMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

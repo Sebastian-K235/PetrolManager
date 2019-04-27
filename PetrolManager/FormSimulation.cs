@@ -11,14 +11,18 @@ using System.IO;
 
 namespace PetrolManager
 {
-    public partial class SimulationForm : Form
+    public partial class FormSimulation : Form
     {
-        
-        public SimulationForm()
+        #region Properties
+        #endregion
+
+        #region Methods
+        public FormSimulation()
         {
             InitializeComponent();
-            applicationLoop.Start();
+            Data.AccessControls(this);
             Data.GeneratePumps();
+
         }
 
         private void btnSimBack_Click(object sender, EventArgs e)
@@ -27,14 +31,9 @@ namespace PetrolManager
             Application.OpenForms[0].Show();
         }
 
-        private void SimulationForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void FormSimulation_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
-        }
-
-        private void applicationLoop_Tick(object sender, EventArgs e)
-        {
-            lblVehNum.Text = Data.vehicles.Count.ToString();
         }
 
         private void btnStop_Click(object sender, EventArgs e)
@@ -44,7 +43,9 @@ namespace PetrolManager
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            Data.GenerateVehicles(); 
+            Data.GenerateVehicles();
+            lblTest1.Text = this.Contains(pcbPump1).ToString();
         }
+        #endregion
     }
 }

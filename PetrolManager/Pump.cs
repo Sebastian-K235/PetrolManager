@@ -68,6 +68,7 @@ namespace PetrolManager
             p.CurrentVehicle = null;
             Counters.VehiclesServed++;
             Counters.TotalLitres += l;
+            Counters.Transactions.Add(transaction);
         }
         #endregion
     }

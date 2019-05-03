@@ -23,7 +23,7 @@ namespace PetrolManager
         {
             InitializeComponent();
             ListPictures();
-            Data.GeneratePumps();
+            Data.InitializeGeneration();
         }
 
         private void ListPictures()
@@ -61,6 +61,7 @@ namespace PetrolManager
         {
             Data.CheckQueue();
             Display.DisplayUI(this);
+            lblVehNum.Text = Data.vehicles.Count.ToString();
         }
 
         private void btnSimBack_Click(object sender, EventArgs e)
@@ -85,8 +86,7 @@ namespace PetrolManager
         }
         private void btnStart_Click(object sender, EventArgs e)
         {
-            Data.GenerateVehicles();
-            lblTest1.Text = this.Contains(pcbPump1).ToString();
+            Data.StartGeneratingVehicles();
         }
 
         #endregion

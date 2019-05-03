@@ -13,6 +13,7 @@ namespace PetrolManager
         public double LitresInTank { get; set; }
         public double TankVolume { get; set; }
         public string VehicleType { get; set; }
+        public string VehicleImage { get; set; }
 
         public static int nextCarID = 0;
         public int CarID { get; set; }
@@ -31,6 +32,7 @@ namespace PetrolManager
             TankVolume = tv;
             FuelType = ftp;
             CarID = nextCarID++;
+            VehicleImage = "picVan.png";
         }
         #endregion
     }

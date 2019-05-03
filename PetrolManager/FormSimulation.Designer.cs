@@ -47,6 +47,7 @@
             this.pcbVehicle4 = new System.Windows.Forms.PictureBox();
             this.pcbVehicle5 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblQueue = new System.Windows.Forms.Label();
             this.tbxTransactionList = new System.Windows.Forms.TextBox();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
@@ -59,7 +60,6 @@
             this.lblVehNum = new System.Windows.Forms.Label();
             this.lblTest1 = new System.Windows.Forms.Label();
             this.tmrAppLoop = new System.Windows.Forms.Timer(this.components);
-            this.lblQueue = new System.Windows.Forms.Label();
             this.pnlPumps.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbPump7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbPump8)).BeginInit();
@@ -217,7 +217,7 @@
             this.pcbVehicle3.Location = new System.Drawing.Point(246, 3);
             this.pcbVehicle3.Name = "pcbVehicle3";
             this.pcbVehicle3.Size = new System.Drawing.Size(75, 75);
-            this.pcbVehicle3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcbVehicle3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pcbVehicle3.TabIndex = 30;
             this.pcbVehicle3.TabStop = false;
             // 
@@ -226,7 +226,7 @@
             this.pcbVehicle4.Location = new System.Drawing.Point(165, 3);
             this.pcbVehicle4.Name = "pcbVehicle4";
             this.pcbVehicle4.Size = new System.Drawing.Size(75, 75);
-            this.pcbVehicle4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcbVehicle4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pcbVehicle4.TabIndex = 31;
             this.pcbVehicle4.TabStop = false;
             // 
@@ -235,7 +235,7 @@
             this.pcbVehicle5.Location = new System.Drawing.Point(84, 3);
             this.pcbVehicle5.Name = "pcbVehicle5";
             this.pcbVehicle5.Size = new System.Drawing.Size(75, 75);
-            this.pcbVehicle5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcbVehicle5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pcbVehicle5.TabIndex = 32;
             this.pcbVehicle5.TabStop = false;
             // 
@@ -251,6 +251,15 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(491, 86);
             this.panel2.TabIndex = 34;
+            // 
+            // lblQueue
+            // 
+            this.lblQueue.AutoSize = true;
+            this.lblQueue.Location = new System.Drawing.Point(19, 35);
+            this.lblQueue.Name = "lblQueue";
+            this.lblQueue.Size = new System.Drawing.Size(46, 17);
+            this.lblQueue.TabIndex = 33;
+            this.lblQueue.Text = "label1";
             // 
             // tbxTransactionList
             // 
@@ -359,15 +368,6 @@
             this.tmrAppLoop.Interval = 33;
             this.tmrAppLoop.Tick += new System.EventHandler(this.tmrAppLoop_Tick);
             // 
-            // lblQueue
-            // 
-            this.lblQueue.AutoSize = true;
-            this.lblQueue.Location = new System.Drawing.Point(19, 35);
-            this.lblQueue.Name = "lblQueue";
-            this.lblQueue.Size = new System.Drawing.Size(46, 17);
-            this.lblQueue.TabIndex = 33;
-            this.lblQueue.Text = "label1";
-            // 
             // FormSimulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -416,7 +416,6 @@
 
         private System.Windows.Forms.Button btnSimBack;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox tbxTransactionList;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnReset;
@@ -444,5 +443,6 @@
         public System.Windows.Forms.Label lblVehNum;
         public System.Windows.Forms.Label lblTest1;
         public System.Windows.Forms.Label lblQueue;
+        public System.Windows.Forms.TextBox tbxTransactionList;
     }
 }

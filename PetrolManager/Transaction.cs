@@ -33,6 +33,15 @@ namespace PetrolManager
             NumberOfLitres = l;
             TransactionID = TransactionNumber++;
         }
+
+        public override string ToString()
+        {
+            string String = "";
+            String += "TransID: " + TransactionID + " | ";
+            String += Pump.PumpID + " | ";
+            String += NumberOfLitres + " | ";
+            return String;
+        }
         #endregion
     }
 }

@@ -23,40 +23,50 @@ namespace PetrolManager
         }
         public static void DisplayQueue(FormSimulation form)
         {
-            if(Data.vehicles.Count > 0)
-            {
 
                 for (int i = 0; i <= 4; i++)
                 {
-                    if (Data.vehicles[i] != null)
-                    {
-                        form.QueuePictures[i].Image = Image.FromFile("picVan.png");
-                    }
-                    else
+                    if (Data.vehicles.ElementAtOrDefault(i) == null)
                     {
                         form.QueuePictures[i].Image = Image.FromFile("picEmpty.png");
                     }
-                    if(i == Data.vehicles.Count -1)
+                    else
                     {
-                        break;
+                        form.QueuePictures[i].Image = Image.FromFile(Data.vehicles[i].VehicleImage);
                     }
-                }
-                if (Data.vehicles.Count > 5)
-                {
-                    form.lblQueue.Text = "+" + (Data.vehicles.Count - 5);
-                }
-                else
-                {
-                    form.lblQueue.Text = "";
+                    
                 }
 
+
+            if (Data.vehicles.Count > 5)
+            {
+                form.lblQueue.Text = "+" + (Data.vehicles.Count - 5);
             }
-
+            else
+            {
+                form.lblQueue.Text = "";
+            }
         }
 
         public static void DisplayTransactions(FormSimulation form)
         {
-
+            if (Counters.Transactions.Count == 0)
+            {
+                form.tbxTransactionList.Text = "No transactions recorded";
+            }
+            else
+            {
+                string transactionString = "";
+                for(int i = 0; i<6; i++)
+                {
+                    transactionString += Counters.Transactions[i].ToString() + Environment.NewLine;
+                    if(i == Counters.Transactions.Count - 1)
+                    {
+                        break;
+                    }
+                }
+                form.tbxTransactionList.Text = transactionString;
+            }
         }
         public static void DisplayCounters(FormSimulation form)
         {           

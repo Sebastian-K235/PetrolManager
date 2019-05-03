@@ -14,22 +14,25 @@ namespace PetrolManager
 
         public static List<Vehicle> vehicles = new List<Vehicle>();
         public static List<Pump> pumps = new List<Pump>();
-        public static Timer vehicleGenTimer;
+        public static Timer vehicleGenTimer = new Timer(500);
 
         #endregion
 
         #region Methods
 
-        public static void GenerateVehicles()
+        public static void InitializeGeneration()
         {
-            vehicleGenTimer = new Timer(500);
             vehicleGenTimer.Elapsed += CreateVehicle;
-            vehicleGenTimer.Start();
+            GeneratePumps();
+        }
+        public static void StartGeneratingVehicles()
+        {
+            vehicleGenTimer.Enabled = true;
         }
 
         public static void StopGeneratingVehicles()
         {
-            vehicleGenTimer.Dispose();
+            vehicleGenTimer.Enabled = false;
         }
 
 

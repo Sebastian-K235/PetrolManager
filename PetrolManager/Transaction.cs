@@ -12,7 +12,7 @@ namespace PetrolManager
         public Vehicle Vehicle { get; set; }
         public Pump Pump { get; set; }
         public double NumberOfLitres { get; set; }
-
+        public double Cost { get; set; }
         public int TransactionID { get; set; }
 
         static int TransactionNumber = 0;
@@ -32,14 +32,29 @@ namespace PetrolManager
             Pump = p;
             NumberOfLitres = l;
             TransactionID = TransactionNumber++;
+            switch(v.FuelType)
+            {
+                case "Unleaded":
+                    Cost = l * Counters.UnleadedPrice;
+                    break;
+                case "LPG":
+                    Cost = l * Counters.LPGPrice;
+                    break;
+                case "Diesel":
+                    Cost = l * Counters.DieselPrice;
+                    break;
+            }
+            Counters.TotalProfit += Cost; 
         }
 
         public override string ToString()
         {
             string String = "";
             String += "TransID: " + TransactionID + " | ";
-            String += Pump.PumpID + " | ";
-            String += NumberOfLitres + " | ";
+            String += "PumpID: " + Pump.PumpID + " | ";
+            String += "Litres: " + NumberOfLitres + " | ";
+            String += "Fuel: " + Vehicle.FuelType + " | ";
+            String += "Cost: £" + Cost + " | ";
             return String;
         }
         #endregion

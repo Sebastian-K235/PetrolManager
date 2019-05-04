@@ -14,31 +14,37 @@ namespace PetrolManager
 
         public static List<Vehicle> vehicles = new List<Vehicle>();
         public static List<Pump> pumps = new List<Pump>();
-        public static Timer vehicleGenTimer;
+        public static Timer vehicleGenTimer = new Timer(1500);
+        public static Random random = new Random();
 
         #endregion
 
         #region Methods
 
-        public static void GenerateVehicles()
+        public static void InitializeGeneration()
         {
-            vehicleGenTimer = new Timer(500);
             vehicleGenTimer.Elapsed += CreateVehicle;
-            vehicleGenTimer.Start();
+            GeneratePumps();
+        }
+        public static void StartGeneratingVehicles()
+        {
+            vehicleGenTimer.Enabled = true;
         }
 
         public static void StopGeneratingVehicles()
         {
-            vehicleGenTimer.Dispose();
+            vehicleGenTimer.Enabled = false;
         }
 
 
         public static void CreateVehicle(object sender, ElapsedEventArgs e)
         {
-            if (vehicles.Count < 20)
-            {
-                Vehicle vehicle = new Vehicle("Petrol", 5, 20);
+            if (vehicles.Count < 5)
+            {                               
+                Vehicle vehicle = new Vehicle(GetRandomVehicle());
                 vehicles.Add(vehicle);
+                vehicle.AwaitService();
+                vehicleGenTimer.Interval = random.Next(1500, 2201);
             }
         }
 
@@ -66,6 +72,24 @@ namespace PetrolManager
                     }
                 }
             }
+        }
+
+        public static string GetRandomVehicle()
+        {
+            string v = "";
+            switch(random.Next(0,3))
+            {
+                case 0:
+                    v = "car";
+                    break;
+                case 1:
+                    v = "van";
+                    break;
+                case 2:
+                    v = "hgv";
+                    break;
+            }
+            return v;
         }
 
         #endregion

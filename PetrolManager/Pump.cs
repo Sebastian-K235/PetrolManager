@@ -31,7 +31,7 @@ namespace PetrolManager
             CurrentVehicle = null;
             FuelType = "Unleaded";
             PictureBox = pb;
-            FuellingRate = 1.5;
+            FuellingRate = 15;
             PumpID = ID;
         }
 
@@ -52,10 +52,22 @@ namespace PetrolManager
         public void FuelVehicle(Vehicle v)
         {
             CurrentVehicle = v;
+            v.Serviced = true;
             Timer timer = new Timer();
             double fuelTime = ((v.TankVolume - v.LitresInTank) / FuellingRate) * 1000;
             timer.Interval = fuelTime + 3000;
-            PictureBox.Image = Image.FromFile("picPumpBusy.png");
+            switch (v.VehicleType)
+            {
+                case "car":
+                    PictureBox.Image = Image.FromFile("picPumpCar.png");
+                    break;
+                case "van":
+                    PictureBox.Image = Image.FromFile("picPumpVan.png");
+                    break;
+                case "hgv":
+                    PictureBox.Image = Image.FromFile("picPumpHGV.png");
+                    break;
+            }           
             timer.AutoReset = false;
             timer.Start();
             timer.Elapsed += (sender, e) => FinishTransaction(sender, e , v, this, v.TankVolume - v.LitresInTank);
@@ -67,7 +79,20 @@ namespace PetrolManager
             p.PictureBox.Image = Image.FromFile("picPumpFree.png");
             p.CurrentVehicle = null;
             Counters.VehiclesServed++;
-            Counters.TotalLitres += l;
+            switch (v.FuelType)
+            {
+                case "Unleaded":
+                    Counters.TotalUnleaded += l;
+                    break;
+                case "LPG":
+                    Counters.TotalLPG += l;
+                    break;
+                case "Diesel":
+                    Counters.TotalDiesel += l;
+                    break;
+            }
+            
+            Counters.Transactions.Add(transaction);
         }
         #endregion
     }

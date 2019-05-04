@@ -33,7 +33,7 @@ namespace PetrolManager
                     else
                     {
                         form.QueuePictures[i].Image = Image.FromFile(Data.vehicles[i].VehicleImage);
-                    }
+                }
                     
                 }
 

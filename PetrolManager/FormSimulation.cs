@@ -59,8 +59,7 @@ namespace PetrolManager
 
 
         private void tmrAppLoop_Tick(object sender, EventArgs e)
-        {
-            Data.CheckQueue();
+        {                   
             Display.DisplayUI(this);
         }
 
@@ -89,7 +88,12 @@ namespace PetrolManager
             Data.StartGeneratingVehicles();
         }
 
+        private void tmrQueueCheck_Tick(object sender, EventArgs e)
+        {
+            Data.CheckQueue();
+        }
         #endregion
+
 
     }
 }

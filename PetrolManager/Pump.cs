@@ -39,10 +39,9 @@ namespace PetrolManager
         /// Returns true if a pump is free to be used.
         /// </summary>
         /// <returns></returns>
-        public bool IsAvailable()
+        public bool IsEmpty()
         {
             return CurrentVehicle == null;
-
         }
 
         /// <summary>

@@ -33,10 +33,10 @@
             this.btnSimBack = new System.Windows.Forms.Button();
             this.pnlPumps = new System.Windows.Forms.Panel();
             this.pcbPump7 = new System.Windows.Forms.PictureBox();
-            this.pcbPump8 = new System.Windows.Forms.PictureBox();
-            this.pcbPump9 = new System.Windows.Forms.PictureBox();
             this.pcbPump4 = new System.Windows.Forms.PictureBox();
             this.pcbPump5 = new System.Windows.Forms.PictureBox();
+            this.pcbPump8 = new System.Windows.Forms.PictureBox();
+            this.pcbPump9 = new System.Windows.Forms.PictureBox();
             this.pcbPump6 = new System.Windows.Forms.PictureBox();
             this.pcbPump2 = new System.Windows.Forms.PictureBox();
             this.pcbPump3 = new System.Windows.Forms.PictureBox();
@@ -60,12 +60,13 @@
             this.tmrAppLoop = new System.Windows.Forms.Timer(this.components);
             this.lblTotalLPG = new System.Windows.Forms.Label();
             this.lblTotalDiesel = new System.Windows.Forms.Label();
+            this.tmrQueueCheck = new System.Windows.Forms.Timer(this.components);
             this.pnlPumps.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbPump7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbPump8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbPump9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbPump4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbPump5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbPump8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbPump9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbPump6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbPump2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbPump3)).BeginInit();
@@ -91,10 +92,10 @@
             // pnlPumps
             // 
             this.pnlPumps.Controls.Add(this.pcbPump7);
-            this.pnlPumps.Controls.Add(this.pcbPump8);
-            this.pnlPumps.Controls.Add(this.pcbPump9);
             this.pnlPumps.Controls.Add(this.pcbPump4);
             this.pnlPumps.Controls.Add(this.pcbPump5);
+            this.pnlPumps.Controls.Add(this.pcbPump8);
+            this.pnlPumps.Controls.Add(this.pcbPump9);
             this.pnlPumps.Controls.Add(this.pcbPump6);
             this.pnlPumps.Controls.Add(this.pcbPump2);
             this.pnlPumps.Controls.Add(this.pcbPump3);
@@ -107,32 +108,12 @@
             // pcbPump7
             // 
             this.pcbPump7.Image = ((System.Drawing.Image)(resources.GetObject("pcbPump7.Image")));
-            this.pcbPump7.Location = new System.Drawing.Point(28, 216);
+            this.pcbPump7.Location = new System.Drawing.Point(28, 18);
             this.pcbPump7.Name = "pcbPump7";
             this.pcbPump7.Size = new System.Drawing.Size(80, 80);
             this.pcbPump7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pcbPump7.TabIndex = 27;
             this.pcbPump7.TabStop = false;
-            // 
-            // pcbPump8
-            // 
-            this.pcbPump8.Image = ((System.Drawing.Image)(resources.GetObject("pcbPump8.Image")));
-            this.pcbPump8.Location = new System.Drawing.Point(125, 216);
-            this.pcbPump8.Name = "pcbPump8";
-            this.pcbPump8.Size = new System.Drawing.Size(80, 80);
-            this.pcbPump8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pcbPump8.TabIndex = 26;
-            this.pcbPump8.TabStop = false;
-            // 
-            // pcbPump9
-            // 
-            this.pcbPump9.Image = ((System.Drawing.Image)(resources.GetObject("pcbPump9.Image")));
-            this.pcbPump9.Location = new System.Drawing.Point(221, 216);
-            this.pcbPump9.Name = "pcbPump9";
-            this.pcbPump9.Size = new System.Drawing.Size(80, 80);
-            this.pcbPump9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pcbPump9.TabIndex = 25;
-            this.pcbPump9.TabStop = false;
             // 
             // pcbPump4
             // 
@@ -154,6 +135,26 @@
             this.pcbPump5.TabIndex = 23;
             this.pcbPump5.TabStop = false;
             // 
+            // pcbPump8
+            // 
+            this.pcbPump8.Image = ((System.Drawing.Image)(resources.GetObject("pcbPump8.Image")));
+            this.pcbPump8.Location = new System.Drawing.Point(125, 18);
+            this.pcbPump8.Name = "pcbPump8";
+            this.pcbPump8.Size = new System.Drawing.Size(80, 80);
+            this.pcbPump8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcbPump8.TabIndex = 26;
+            this.pcbPump8.TabStop = false;
+            // 
+            // pcbPump9
+            // 
+            this.pcbPump9.Image = ((System.Drawing.Image)(resources.GetObject("pcbPump9.Image")));
+            this.pcbPump9.Location = new System.Drawing.Point(221, 18);
+            this.pcbPump9.Name = "pcbPump9";
+            this.pcbPump9.Size = new System.Drawing.Size(80, 80);
+            this.pcbPump9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcbPump9.TabIndex = 25;
+            this.pcbPump9.TabStop = false;
+            // 
             // pcbPump6
             // 
             this.pcbPump6.Image = ((System.Drawing.Image)(resources.GetObject("pcbPump6.Image")));
@@ -167,7 +168,7 @@
             // pcbPump2
             // 
             this.pcbPump2.Image = ((System.Drawing.Image)(resources.GetObject("pcbPump2.Image")));
-            this.pcbPump2.Location = new System.Drawing.Point(125, 19);
+            this.pcbPump2.Location = new System.Drawing.Point(125, 215);
             this.pcbPump2.Name = "pcbPump2";
             this.pcbPump2.Size = new System.Drawing.Size(80, 80);
             this.pcbPump2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -177,7 +178,7 @@
             // pcbPump3
             // 
             this.pcbPump3.Image = ((System.Drawing.Image)(resources.GetObject("pcbPump3.Image")));
-            this.pcbPump3.Location = new System.Drawing.Point(221, 19);
+            this.pcbPump3.Location = new System.Drawing.Point(221, 215);
             this.pcbPump3.Name = "pcbPump3";
             this.pcbPump3.Size = new System.Drawing.Size(80, 80);
             this.pcbPump3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -187,7 +188,7 @@
             // pcbPump1
             // 
             this.pcbPump1.Image = ((System.Drawing.Image)(resources.GetObject("pcbPump1.Image")));
-            this.pcbPump1.Location = new System.Drawing.Point(28, 19);
+            this.pcbPump1.Location = new System.Drawing.Point(28, 215);
             this.pcbPump1.Name = "pcbPump1";
             this.pcbPump1.Size = new System.Drawing.Size(80, 80);
             this.pcbPump1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -266,6 +267,7 @@
             this.tbxTransactionList.Location = new System.Drawing.Point(12, 105);
             this.tbxTransactionList.Multiline = true;
             this.tbxTransactionList.Name = "tbxTransactionList";
+            this.tbxTransactionList.ReadOnly = true;
             this.tbxTransactionList.Size = new System.Drawing.Size(491, 397);
             this.tbxTransactionList.TabIndex = 35;
             // 
@@ -368,6 +370,12 @@
             this.lblTotalDiesel.TabIndex = 45;
             this.lblTotalDiesel.Text = "Total Diesel: ";
             // 
+            // tmrQueueCheck
+            // 
+            this.tmrQueueCheck.Enabled = true;
+            this.tmrQueueCheck.Interval = 500;
+            this.tmrQueueCheck.Tick += new System.EventHandler(this.tmrQueueCheck_Tick);
+            // 
             // FormSimulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -392,10 +400,10 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormSimulation_FormClosed);
             this.pnlPumps.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pcbPump7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbPump8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbPump9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbPump4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbPump5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbPump8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbPump9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbPump6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbPump2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbPump3)).EndInit();
@@ -444,5 +452,6 @@
         public System.Windows.Forms.TextBox tbxTransactionList;
         public System.Windows.Forms.Label lblTotalLPG;
         public System.Windows.Forms.Label lblTotalDiesel;
+        public System.Windows.Forms.Timer tmrQueueCheck;
     }
 }

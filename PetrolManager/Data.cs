@@ -44,7 +44,7 @@ namespace PetrolManager
                 Vehicle vehicle = new Vehicle(GetRandomVehicle());
                 vehicles.Add(vehicle);
                 vehicle.AwaitService();
-                vehicleGenTimer.Interval = random.Next(1500, 2201);
+                vehicleGenTimer.Interval = random.Next(1000, 3001);
             }
         }
 
@@ -62,11 +62,11 @@ namespace PetrolManager
         {
             if (vehicles.Count > 0)
             {
-                foreach (Pump p in pumps)
+                for (int i = 8; i >= 0; i--)
                 {
-                    if (p.IsAvailable() == true)
+                    if (PumpAvailable(pumps[i]))
                     {
-                        p.FuelVehicle(vehicles[0]);
+                        pumps[i].FuelVehicle(vehicles[0]);
                         vehicles.RemoveAt(0);
                         break;
                     }
@@ -92,6 +92,32 @@ namespace PetrolManager
             return v;
         }
 
+        public static bool PumpAvailable(Pump p)
+        {
+            switch (p.PumpID)
+            {
+                case 7:
+                    if (p.IsEmpty()) { return true; } else { return false; }
+                case 4:
+                    if (p.IsEmpty()) { return true; } else { return false; }
+                case 1:
+                    if (p.IsEmpty()) { return true; } else { return false; }
+                case 8:
+                    if (p.IsEmpty() && Data.pumps[6].IsEmpty()) { return true; } else { return false; }
+                case 5:
+                    if (p.IsEmpty() && Data.pumps[3].IsEmpty()) { return true; } else { return false; }
+                case 2:
+                    if (p.IsEmpty() && Data.pumps[0].IsEmpty()) { return true; } else { return false; }
+                case 9:
+                    if (p.IsEmpty() && Data.pumps[7].IsEmpty() && Data.pumps[6].IsEmpty()) { return true; } else { return false; }
+                case 6:
+                    if (p.IsEmpty() && Data.pumps[4].IsEmpty() && Data.pumps[3].IsEmpty()) { return true; } else { return false; } 
+                case 3:
+                    if (p.IsEmpty() && Data.pumps[1].IsEmpty() && Data.pumps[0].IsEmpty()) { return true; } else { return false; }
+                default:
+                    return false;
+            }
+        }
         #endregion
     }
 }

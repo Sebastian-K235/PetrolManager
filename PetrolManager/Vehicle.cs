@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using System.Drawing;
 
 namespace PetrolManager
 {
@@ -96,7 +97,7 @@ namespace PetrolManager
         public void AwaitService()
         {
             Random random = new Random();
-            Timer timer = new Timer(random.Next(1000,2001));
+            Timer timer = new Timer(random.Next(2000,2701));
             timer.AutoReset = false;
             timer.Enabled = true;
             timer.Elapsed += LeaveTheStation;
@@ -116,7 +117,7 @@ namespace PetrolManager
             switch (VehicleType)
             {
                 case "car":
-                    VehicleImage = "picCar.png";
+                    VehicleImage = "picCar.png";                    
                     break;
                 case "van":
                     VehicleImage = "picVan.png";

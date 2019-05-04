@@ -77,6 +77,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="FormSimulation.resx">
       <DependentUpon>FormSimulation.cs</DependentUpon>
@@ -93,6 +94,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\picVan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\picCar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\picHGV.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\picPumpCar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\picPumpFree.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\picPumpHGV.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\picPumpVan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\picVan.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

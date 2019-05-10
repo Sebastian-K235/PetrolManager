@@ -5,49 +5,71 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using PetrolManager;
+using System.Drawing;
 
 namespace PetrolManager
 {
     class Data
     {
         #region Properties
-
+        /// <summary>
+        /// List representing the queue of vehicles waiting to be serviced.
+        /// </summary>
         public static List<Vehicle> vehicles = new List<Vehicle>();
+
+        /// <summary>
+        /// List containing the pumps in the forecourt.
+        /// </summary>
         public static List<Pump> pumps = new List<Pump>();
-        public static Timer vehicleGenTimer = new Timer(1500);
+
+        /// <summary>
+        /// Timer triggering the creation of a new vehicle.
+        /// </summary>
+        public static Timer vehicleGenTimer = new Timer(100);
+
         public static Random random = new Random();
 
         #endregion
 
         #region Methods
-
+        /// <summary>
+        /// Method executed on the startup
+        /// </summary>
         public static void InitializeGeneration()
         {
             vehicleGenTimer.Elapsed += CreateVehicle;
             GeneratePumps();
         }
+
+
         public static void StartGeneratingVehicles()
         {
             vehicleGenTimer.Enabled = true;
         }
-
         public static void StopGeneratingVehicles()
         {
             vehicleGenTimer.Enabled = false;
         }
 
-
+        /// <summary>
+        /// A method to randomly create a vehicle.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public static void CreateVehicle(object sender, ElapsedEventArgs e)
         {
-            if (vehicles.Count < 5)
+            if (vehicles.Count < 10)
             {                               
                 Vehicle vehicle = new Vehicle(GetRandomVehicle());
                 vehicles.Add(vehicle);
                 vehicle.AwaitService();
-                vehicleGenTimer.Interval = random.Next(1000, 3001);
+                vehicleGenTimer.Interval = random.Next(800, 2601);
             }
         }
 
+        /// <summary>
+        /// Method generating a set of 9 pumps and adding them to "pumps" list.
+        /// </summary>
         public static void GeneratePumps()
         {
             for (int i = 0; i <= 8; i++)
@@ -58,6 +80,9 @@ namespace PetrolManager
 
         }
 
+        /// <summary>
+        /// Takes the fisrt vehicle from the queue and services it at first available pump.
+        /// </summary>
         public static void CheckQueue()
         {
             if (vehicles.Count > 0)
@@ -74,6 +99,10 @@ namespace PetrolManager
             }
         }
 
+        /// <summary>
+        /// Method returning a random vehicle type (car, van, hgv).
+        /// </summary>
+        /// <returns></returns>
         public static string GetRandomVehicle()
         {
             string v = "";
@@ -92,6 +121,11 @@ namespace PetrolManager
             return v;
         }
 
+        /// <summary>
+        /// Method checking if the referenced pump is not blocked by the pump before in the lane.
+        /// </summary>
+        /// <param name="p">Pump to be checked.</param>
+        /// <returns></returns>
         public static bool PumpAvailable(Pump p)
         {
             switch (p.PumpID)
@@ -117,6 +151,27 @@ namespace PetrolManager
                 default:
                     return false;
             }
+        }
+
+        /// <summary>
+        /// Method reseting the runtime of the app
+        /// </summary>
+        public static void ResetData()
+        {
+            StopGeneratingVehicles();
+            foreach(Vehicle v in vehicles)
+            {
+                v.Serviced = true;
+            }
+            vehicles.Clear();
+            for(int i = 0; i <9; i++)
+            {
+                pumps[i].Enabled = false;
+                pumps[i].CurrentVehicle = null;
+                pumps[i].PictureBox.Image = Properties.Resources.picPumpFree;
+            }
+            pumps.Clear();
+            GeneratePumps();
         }
         #endregion
     }

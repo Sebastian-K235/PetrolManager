@@ -14,13 +14,21 @@ namespace PetrolManager
         #endregion
 
         #region Methods
-
+        /// <summary>
+        /// Method combining other display class methods to present the whole UI.
+        /// </summary>
+        /// <param name="form">Simulation form</param>
         public static void DisplayUI(FormSimulation form)
         {
             DisplayCounters(form);
             DisplayQueue(form);
             DisplayTransactions(form);
         }
+
+        /// <summary>
+        /// Method to display the queue of vehicles.
+        /// </summary>
+        /// <param name="form"></param>
         public static void DisplayQueue(FormSimulation form)
         {
 
@@ -32,7 +40,7 @@ namespace PetrolManager
                     }
                     else
                     {
-                        form.QueuePictures[i].Image = Image.FromFile(Data.vehicles[i].VehicleImage);
+                    form.QueuePictures[i].Image = Data.vehicles[i].VehicleImage;
                 }
                     
                 }
@@ -47,6 +55,11 @@ namespace PetrolManager
                 form.lblQueue.Text = "";
             }
         }
+
+        /// <summary>
+        /// Method to display the transaction list.
+        /// </summary>
+        /// <param name="form"></param>
         public static void DisplayTransactions(FormSimulation form)
         {
             string transactionString = "";
@@ -75,13 +88,18 @@ namespace PetrolManager
             }
             form.tbxTransactionList.Text = transactionString;
         }
+
+        /// <summary>
+        /// Method to display the counters.
+        /// </summary>
+        /// <param name="form"></param>
         public static void DisplayCounters(FormSimulation form)
         {           
             form.lblTotalUnleaded.Text = "Total Unleaded: " + Counters.TotalUnleaded + " litres";
             form.lblTotalLPG.Text = "Total LPG: " + Counters.TotalLPG + " litres";
             form.lblTotalDiesel.Text = "Total Diesel: " + Counters.TotalDiesel + " litres";
-            form.lblTotalProfit.Text = "Total Profit: £" + Counters.TotalProfit;           
-            form.lblCommission.Text = "Commission: £" + Counters.Commission;
+            form.lblTotalProfit.Text = String.Format("Total Profit: £{0:0.00}", Counters.TotalProfit);           
+            form.lblCommission.Text = String.Format("Commission: £{0:0.00}", Counters.Commission);
             form.lblVehiclesServiced.Text = "Vehicles Serviced: " + Counters.VehiclesServed;
             form.lblVehiclesUnserviced.Text = "Vehicles UnServiced: " + Counters.VehiclesUnserved;
         }

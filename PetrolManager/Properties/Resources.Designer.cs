@@ -61,6 +61,16 @@ namespace PetrolManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon _59926826_331549347507719_114077157470240768_n_LuA_icon {
+            get {
+                object obj = ResourceManager.GetObject("_59926826_331549347507719_114077157470240768_n_LuA_icon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap picCar {
@@ -76,6 +86,16 @@ namespace PetrolManager.Properties {
         internal static System.Drawing.Bitmap picHGV {
             get {
                 object obj = ResourceManager.GetObject("picHGV", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap picMenu {
+            get {
+                object obj = ResourceManager.GetObject("picMenu", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -116,6 +136,16 @@ namespace PetrolManager.Properties {
         internal static System.Drawing.Bitmap picPumpVan {
             get {
                 object obj = ResourceManager.GetObject("picPumpVan", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap picTimer6 {
+            get {
+                object obj = ResourceManager.GetObject("picTimer6", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

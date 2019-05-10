@@ -15,9 +15,7 @@ namespace PetrolManager
         #region Properties
      
         public Vehicle CurrentVehicle { get; set; }
-
-        public string FuelType { get; set; }
-
+        public bool Enabled { get; set; }
         public double FuellingRate { get; set; }
 
         public System.Windows.Forms.PictureBox PictureBox = new System.Windows.Forms.PictureBox();
@@ -29,10 +27,10 @@ namespace PetrolManager
         public Pump(int ID, System.Windows.Forms.PictureBox pb)
         {
             CurrentVehicle = null;
-            FuelType = "Unleaded";
             PictureBox = pb;
-            FuellingRate = 15;
+            FuellingRate = 30;
             PumpID = ID;
+            Enabled = true;
         }
 
         /// <summary>
@@ -58,13 +56,13 @@ namespace PetrolManager
             switch (v.VehicleType)
             {
                 case "car":
-                    PictureBox.Image = Image.FromFile("picPumpCar.png");
+                    PictureBox.Image = Properties.Resources.picPumpCar;
                     break;
                 case "van":
-                    PictureBox.Image = Image.FromFile("picPumpVan.png");
+                    PictureBox.Image = Properties.Resources.picPumpVan;
                     break;
                 case "hgv":
-                    PictureBox.Image = Image.FromFile("picPumpHGV.png");
+                    PictureBox.Image = Properties.Resources.picPumpHGV;
                     break;
             }           
             timer.AutoReset = false;
@@ -74,25 +72,29 @@ namespace PetrolManager
 
         public static void FinishTransaction(object sender, ElapsedEventArgs e, Vehicle v, Pump p, double l)
         {
-            Transaction transaction = new Transaction(v, p, l);
-            p.PictureBox.Image = Image.FromFile("picPumpFree.png");
-            p.CurrentVehicle = null;
-            Counters.VehiclesServed++;
-            switch (v.FuelType)
+            if(p.Enabled)
             {
-                case "Unleaded":
-                    Counters.TotalUnleaded += l;
-                    break;
-                case "LPG":
-                    Counters.TotalLPG += l;
-                    break;
-                case "Diesel":
-                    Counters.TotalDiesel += l;
-                    break;
-            }
-            
-            Counters.Transactions.Add(transaction);
+                Transaction transaction = new Transaction(v, p, l);
+                p.PictureBox.Image = Properties.Resources.picPumpFree;
+                p.CurrentVehicle = null;
+                Counters.VehiclesServed++;
+                switch (v.FuelType)
+                {
+                    case "Unleaded":
+                        Counters.TotalUnleaded += l;
+                        break;
+                    case "LPG":
+                        Counters.TotalLPG += l;
+                        break;
+                    case "Diesel":
+                        Counters.TotalDiesel += l;
+                        break;
+                }
+
+                Counters.Transactions.Add(transaction);
+            }             
         }
+
         #endregion
     }
 }

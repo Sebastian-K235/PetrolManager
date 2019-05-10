@@ -114,27 +114,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="bin\Debug\picCar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="bin\Debug\picHGV.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="bin\Debug\picPumpCar.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="bin\Debug\picPumpFree.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="bin\Debug\picPumpHGV.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="bin\Debug\picPumpVan.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="bin\Debug\picVan.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
@@ -155,6 +134,9 @@
   <ItemGroup>
     <Content Include="59926826_331549347507719_114077157470240768_n_LuA_icon.ico" />
     <None Include="Resources\59926826_331549347507719_114077157470240768_n_LuA_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

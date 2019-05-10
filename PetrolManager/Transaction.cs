@@ -51,10 +51,10 @@ namespace PetrolManager
         {
             string String = "";
             String += "TransID: " + TransactionID + " | ";
-            String += "PumpID: " + Pump.PumpID + " | ";
+            String += "Pump: " + Pump.PumpID + " | ";
             String += "Litres: " + NumberOfLitres + " | ";
             String += "Fuel: " + Vehicle.FuelType + " | ";
-            String += "Cost: £" + Cost + " | ";
+            String += "Cost: £" + Cost;
             return String;
         }
         #endregion

@@ -26,7 +26,6 @@ namespace PetrolManager
             Data.InitializeGeneration();
             Counters.SetPrices();
         }
-
         private void ListPictures()
         {
             ListPumpPictures();
@@ -60,13 +59,14 @@ namespace PetrolManager
 
         private void tmrAppLoop_Tick(object sender, EventArgs e)
         {
-            Data.CheckQueue();
             Display.DisplayUI(this);
         }
 
         private void btnSimBack_Click(object sender, EventArgs e)
         {
             this.Hide();
+            Counters.ResetCounters();
+            Data.ResetData();
             Application.OpenForms[0].Show();
         }
 
@@ -82,14 +82,20 @@ namespace PetrolManager
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-
+            Counters.ResetCounters();
+            Data.ResetData();            
         }
         private void btnStart_Click(object sender, EventArgs e)
         {
             Data.StartGeneratingVehicles();
         }
 
+        private void tmrQueueCheck_Tick(object sender, EventArgs e)
+        {
+            Data.CheckQueue();
+        }
         #endregion
+
 
     }
 }
